@@ -38,9 +38,9 @@ func (st *BaseSuite) SetupSuite() {
 	err = st.repoRedis.InitUniversalClient(ctx, redisCnf)
 	st.Suite.Require().NoError(err)
 
-	containers, cnfCluster, err := containers.SetupRedisCluster(ctx, "dev", imageRedis)
+	containersRedis, cnfCluster, err := containers.SetupRedisCluster(ctx, "dev", imageRedis)
 	st.Suite.Require().NoError(err)
-	st.containersClusterRedis = containers
+	st.containersClusterRedis = containersRedis
 	cnfClusterRd := &redis_store.Config{
 		Addrs:        cnfCluster.Addrs,
 		Username:     cnfCluster.Username,
