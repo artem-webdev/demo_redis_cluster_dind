@@ -1,0 +1,25 @@
+name: "docker_in_docker"
+
+services:
+  demo:
+    build:
+      context: ../backend
+      dockerfile: ../deployments/build/Dockerfile
+    container_name: demo
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+      TINI_SUBREAPER: "1"  # Для корректной работы Tini
+    volumes:
+      - dind-data:/var/lib/docker  # Сохраняем данные Docker
+    entrypoint: >
+      tini -- sh -c "
+      dockerd-entrypoint.sh &
+      sleep 20;
+      go test -v -count=1 -failfast ./tests/redis_test_containers/... 
+      "
+    ports:
+      - "2375:2375"
+
+volumes:
+  dind-data:
