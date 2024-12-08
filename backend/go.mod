@@ -1,4 +1,4 @@
-module docker_in_docker
+module github.com/artem-webdev/demo_redis_cluster_dind
 
 go 1.23.2
 

@@ -2,8 +2,8 @@ package redis_test_containers
 
 import (
 	"context"
-	"docker_in_docker/redis_store"
-	"docker_in_docker/tests/containers"
+	"github.com/artem-webdev/demo_redis_cluster_dind/redis_store"
+	"github.com/artem-webdev/demo_redis_cluster_dind/tests/containers"
 	"github.com/stretchr/testify/suite"
 	"github.com/testcontainers/testcontainers-go/modules/redis"
 )
