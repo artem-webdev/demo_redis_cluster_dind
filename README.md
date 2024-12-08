@@ -2,7 +2,10 @@
 
 ## как запустить  
 ```
-cd ./deployments && docker compose up --build 
+1) docker pull redis:7.2.4-alpine это желательно но не обязательно если проблемы с пуллом этого образа ,
+ то спульте не менее по версии и укажите ваш образ в ./backend/tests/redis_test_containers/base.go в константе imageRedis 
+2) cd ./deployments
+3) docker compose up --build в первый раз потом можно docker compose up
 ```
 ## особености , не стал заморачиваться писать скрипт , просто определил в entrypoint композ файла
 ```
